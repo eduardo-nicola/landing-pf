@@ -50,25 +50,25 @@ export function HeroSection() {
   ]
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center pt-16 pb-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <section id="hero" className="min-h-screen flex items-center justify-center section-padding-lg">
+      <div className="container">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 xl:gap-20 items-center">
           {/* Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="text-center lg:text-left"
+            className="text-center lg:text-left space-y-responsive"
           >
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-surface border border-border rounded-full px-4 py-2 mb-6"
+              className="inline-flex items-center gap-2 bg-surface border border-border rounded-full px-3 sm:px-4 py-2 text-sm"
             >
               <div className="w-2 h-2 bg-success rounded-full animate-pulse" />
-              <span className="text-sm text-text-muted font-medium">
+              <span className="text-xs sm:text-sm text-text-muted font-medium">
                 Open Source • MIT License
               </span>
             </motion.div>
@@ -78,7 +78,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6"
+              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-balance"
             >
               <span className="text-gradient-primary">Path-Fast</span>
               <span className="block text-text mt-2">
@@ -92,10 +92,10 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-lg sm:text-xl text-text-muted mb-8 max-w-2xl mx-auto lg:mx-0"
+              className="text-responsive text-text-muted max-w-2xl mx-auto lg:mx-0 text-balance"
             >
-              Uma ferramenta CLI moderna que simplifica a navegação entre projetos. 
-              Salve caminhos com aliases personalizados, abra rapidamente no VS Code e 
+              Uma ferramenta CLI moderna que simplifica a navegação entre projetos.
+              Salve caminhos com aliases personalizados, abra rapidamente no VS Code e
               execute comandos extras.
             </motion.p>
 
@@ -104,14 +104,14 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="mb-8"
+              className="space-y-3"
             >
-              <p className="text-sm text-text-muted mb-3 font-medium">
+              <p className="text-sm text-text-muted font-medium">
                 Instalação rápida:
               </p>
-              <InlineCodeWithCopy 
+              <InlineCodeWithCopy
                 code={packageInfo.installCommand}
-                className="text-primary"
+                className="text-primary text-sm sm:text-base"
               />
             </motion.div>
 
@@ -120,7 +120,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
             >
               <Button
                 size="lg"
@@ -154,19 +154,19 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex items-center justify-center lg:justify-start gap-8 mt-12 text-sm text-text-muted"
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 lg:gap-8 text-xs sm:text-sm text-text-muted"
             >
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-success rounded-full" />
-                <span>Instalação Global</span>
+                <span className="whitespace-nowrap">Instalação Global</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-primary rounded-full" />
-                <span>Zero Configuração</span>
+                <span className="whitespace-nowrap">Zero Configuração</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-accent rounded-full" />
-                <span>Cross-Platform</span>
+                <span className="whitespace-nowrap">Cross-Platform</span>
               </div>
             </motion.div>
           </motion.div>
@@ -176,7 +176,7 @@ export function HeroSection() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
-            className="relative"
+            className="relative order-first lg:order-last"
           >
             {/* Background Glow */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg blur-3xl scale-110 opacity-30" />
@@ -187,38 +187,38 @@ export function HeroSection() {
                 autoPlay={true}
                 loop={true}
                 title="Path-Fast Demo"
-                className="shadow-2xl border-2 border-border/50"
+                className="shadow-2xl border-2 border-border/50 max-w-full"
               />
             </div>
 
-            {/* Floating Elements */}
+            {/* Floating Elements - Hidden on small screens */}
             <motion.div
-              animate={{ 
+              animate={{
                 y: [0, -10, 0],
                 rotate: [0, 5, 0]
               }}
-              transition={{ 
+              transition={{
                 duration: 6,
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-              className="absolute -top-6 -right-6 w-12 h-12 bg-gradient-primary rounded-lg shadow-lg flex items-center justify-center text-background font-bold"
+              className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-primary rounded-lg shadow-lg flex items-center justify-center text-background font-bold text-lg sm:text-xl hidden sm:flex"
             >
               🚀
             </motion.div>
 
             <motion.div
-              animate={{ 
+              animate={{
                 y: [0, 10, 0],
                 rotate: [0, -5, 0]
               }}
-              transition={{ 
+              transition={{
                 duration: 4,
                 repeat: Infinity,
                 ease: "easeInOut",
                 delay: 1
               }}
-              className="absolute -bottom-4 -left-4 w-8 h-8 bg-gradient-to-r from-accent to-secondary rounded-full shadow-lg"
+              className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-accent to-secondary rounded-full shadow-lg hidden sm:block"
             />
           </motion.div>
         </div>
@@ -228,20 +228,20 @@ export function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.5 }}
-          className="flex justify-center mt-20"
+          className="flex justify-center mt-12 sm:mt-16 lg:mt-20"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center gap-2 text-text-muted cursor-pointer"
+            className="flex flex-col items-center gap-2 text-text-muted cursor-pointer hover:text-text transition-colors"
             onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            <span className="text-sm font-medium">Descobrir funcionalidades</span>
-            <div className="w-6 h-10 border-2 border-border rounded-full flex justify-center">
+            <span className="text-xs sm:text-sm font-medium text-center">Descobrir funcionalidades</span>
+            <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-border rounded-full flex justify-center">
               <motion.div
-                animate={{ y: [0, 12, 0], opacity: [1, 0, 1] }}
+                animate={{ y: [0, 10, 0], opacity: [1, 0, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="w-1 h-3 bg-primary rounded-full mt-2"
+                className="w-1 h-2 sm:h-3 bg-primary rounded-full mt-1 sm:mt-2"
               />
             </div>
           </motion.div>

@@ -20,7 +20,9 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
         ref={ref}
         {...props}
       >
-        {children}
+        <div className="card-content-flex">
+          {children}
+        </div>
       </div>
     )
   }
@@ -36,7 +38,7 @@ const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
   ({ className, children, ...props }, ref) => {
     return (
       <div
-        className={cn('mb-4', className)}
+        className={cn('mb-3 sm:mb-4 flex-shrink-0', className)}
         ref={ref}
         {...props}
       >
@@ -57,7 +59,7 @@ const CardTitle = forwardRef<HTMLHeadingElement, CardTitleProps>(
   ({ className, children, as: Component = 'h3', ...props }, ref) => {
     return (
       <Component
-        className={cn('text-xl font-semibold text-text', className)}
+        className={cn('text-lg sm:text-xl font-semibold text-text text-balance', className)}
         ref={ref}
         {...props}
       >
@@ -77,7 +79,7 @@ const CardContent = forwardRef<HTMLDivElement, CardContentProps>(
   ({ className, children, ...props }, ref) => {
     return (
       <div
-        className={cn('text-text-muted', className)}
+        className={cn('text-text-muted text-sm sm:text-base flex-1', className)}
         ref={ref}
         {...props}
       >
@@ -97,7 +99,7 @@ const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(
   ({ className, children, ...props }, ref) => {
     return (
       <div
-        className={cn('mt-4 pt-4 border-t border-border', className)}
+        className={cn('mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-border flex-shrink-0', className)}
         ref={ref}
         {...props}
       >

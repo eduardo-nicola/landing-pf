@@ -40,21 +40,21 @@ export function Header() {
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="container">
+        <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 z-50"
           >
-            <div className="flex items-center gap-2 text-xl font-bold text-gradient-primary">
-              <span className="text-2xl">🚀</span>
-              {siteConfig.name}
+            <div className="flex items-center gap-2 text-lg sm:text-xl font-bold text-gradient-primary">
+              <span className="text-xl sm:text-2xl">🚀</span>
+              <span className="truncate">{siteConfig.name}</span>
             </div>
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navigation.map((item) => (
               <motion.button
                 key={item.name}
@@ -69,7 +69,7 @@ export function Header() {
           </nav>
 
           {/* Actions */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-3">
             <Button
               variant="ghost"
               size="sm"
@@ -77,7 +77,7 @@ export function Header() {
               className="flex items-center gap-2"
             >
               <Package className="w-4 h-4" />
-              NPM
+              <span className="hidden xl:inline">NPM</span>
             </Button>
             
             <Button
@@ -87,7 +87,32 @@ export function Header() {
               className="flex items-center gap-2"
             >
               <Github className="w-4 h-4" />
-              GitHub
+              <span className="hidden xl:inline">GitHub</span>
+            </Button>
+            
+            <ThemeToggle />
+          </div>
+
+          {/* Tablet Actions */}
+          <div className="hidden md:flex lg:hidden items-center gap-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => window.open(siteConfig.links.npm, '_blank')}
+              className="p-2"
+              title="NPM"
+            >
+              <Package className="w-4 h-4" />
+            </Button>
+            
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => window.open(siteConfig.links.github, '_blank')}
+              className="p-2"
+              title="GitHub"
+            >
+              <Github className="w-4 h-4" />
             </Button>
             
             <ThemeToggle />
@@ -100,7 +125,7 @@ export function Header() {
               variant="ghost"
               size="sm"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2"
+              className="p-2 z-50"
             >
               {isMobileMenuOpen ? (
                 <X className="w-5 h-5" />
@@ -127,46 +152,51 @@ export function Header() {
               transition: { duration: 0.3, ease: "easeIn" }
             }
           }}
-          className="md:hidden overflow-hidden bg-surface border-t border-border"
+          className="md:hidden overflow-hidden bg-surface/95 backdrop-blur-lg border-t border-border shadow-lg"
         >
-          <div className="py-4 space-y-4">
-            {navigation.map((item) => (
+          <div className="container py-6 space-y-1">
+            {navigation.map((item, index) => (
               <motion.button
                 key={item.name}
                 onClick={() => handleNavigationClick(item.href)}
-                className="block w-full text-left px-4 py-2 text-text-muted hover:text-text hover:bg-surface-elevated transition-colors rounded-lg"
-                whileTap={{ scale: 0.95 }}
+                className="block w-full text-left px-4 py-3 text-text-muted hover:text-text hover:bg-surface-elevated/50 transition-all duration-200 rounded-lg font-medium"
+                whileTap={{ scale: 0.98 }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1 }}
               >
                 {item.name}
               </motion.button>
             ))}
             
-            <div className="flex gap-2 px-4">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => {
-                  window.open(siteConfig.links.npm, '_blank')
-                  setIsMobileMenuOpen(false)
-                }}
-                className="flex-1 flex items-center justify-center gap-2"
-              >
-                <Package className="w-4 h-4" />
-                NPM
-              </Button>
-              
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => {
-                  window.open(siteConfig.links.github, '_blank')
-                  setIsMobileMenuOpen(false)
-                }}
-                className="flex-1 flex items-center justify-center gap-2"
-              >
-                <Github className="w-4 h-4" />
-                GitHub
-              </Button>
+            <div className="pt-4 mt-4 border-t border-border/50">
+              <div className="grid grid-cols-2 gap-3 px-4">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => {
+                    window.open(siteConfig.links.npm, '_blank')
+                    setIsMobileMenuOpen(false)
+                  }}
+                  className="flex items-center justify-center gap-2"
+                >
+                  <Package className="w-4 h-4" />
+                  NPM
+                </Button>
+                
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    window.open(siteConfig.links.github, '_blank')
+                    setIsMobileMenuOpen(false)
+                  }}
+                  className="flex items-center justify-center gap-2"
+                >
+                  <Github className="w-4 h-4" />
+                  GitHub
+                </Button>
+              </div>
             </div>
           </div>
         </motion.div>
