@@ -106,7 +106,7 @@ export function DemoSection() {
             {demoScenarios.map((scenario) => (
               <Card
                 key={scenario.id}
-                className={`cursor-pointer transition-all duration-300 ${
+                className={`!h-auto cursor-pointer transition-all duration-300 ${
                   activeDemo.id === scenario.id
                     ? 'border-primary bg-primary/5'
                     : 'hover:border-primary/50'
@@ -141,20 +141,20 @@ export function DemoSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-2 order-1 lg:order-2"
+            className="lg:col-span-2 order-1 lg:order-2 pb-4 h-full"
           >
-            <div className="relative">
-              {/* Background Effects */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/5 to-secondary/10 rounded-2xl blur-2xl scale-105" />
-              
-              <div className="relative">
+          <div className="relative h-full flex flex-col">
+            {/* Background Effects */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/5 to-secondary/10 rounded-2xl blur-2xl scale-105" />
+            
+            <div className="relative z-10 flex-1 flex flex-col">
                 <Terminal
                   key={terminalKey}
                   lines={activeDemo.lines}
                   autoPlay={true}
                   loop={false}
                   title={`Path-Fast Demo - ${activeDemo.title}`}
-                  className="min-h-[300px] sm:min-h-[400px] shadow-2xl border-2 border-border/50 max-w-full"
+                  className="min-h-[300px] sm:min-h-[400px] shadow-2xl border-2 border-border/50 max-w-full flex-1"
                   onComplete={() => setIsPlaying(false)}
                 />
               </div>
@@ -163,7 +163,7 @@ export function DemoSection() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 bg-background border-2 border-border rounded-full p-2 sm:p-3 shadow-lg"
+                className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 bg-background border-2 border-border rounded-full p-2 sm:p-3 shadow-lg z-20"
               >
                 {isPlaying ? (
                   <div className="flex items-center gap-1 sm:gap-2">

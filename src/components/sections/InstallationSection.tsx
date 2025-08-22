@@ -45,8 +45,8 @@ export function InstallationSection() {
   }
 
   return (
-    <section id="installation" className="py-20 bg-gradient-to-b from-background to-surface/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="installation" className="section-padding bg-gradient-to-b from-background to-surface/50">
+      <div className="container">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

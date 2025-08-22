@@ -62,8 +62,8 @@ const badges = [
 
 export function OpenSourceSection() {
   return (
-    <section id="contribute" className="py-20 bg-gradient-to-b from-surface/50 to-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contribute" className="section-padding bg-gradient-to-b from-surface/50 to-background">
+      <div className="container">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

@@ -53,7 +53,7 @@ export function Footer() {
 
   return (
     <footer className="bg-gradient-to-b from-surface to-surface-elevated border-t border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container">
         {/* Main Footer */}
         <div className="py-16">
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
