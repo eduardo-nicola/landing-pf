@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --pure-black: 0 0% 0%;
+    --pure-white: 0 0% 100%;
+    --min-white: 192 100% 96%;
+
+    --blue-lighter: 180 98% 48%;
+    --blue-lightest: 180 100% 78%;
+    --blue: 180 100% 40%;
+    --blue-darker: 187 100% 36%;
+    --blue-darkest: 194 100% 31%;
+
+    --green-lighter: 156 100% 74%;
+    --green-lightest: 156 100% 84%;
+    --green: 156 100% 50%;
+    --green-darker: 162 99% 46%;
+    --green-darkest: 166 100%, 38%;
+
+    --mid-blue-lighter: 217 100% 50%;
+    --mid-blue-lightest: 209 100% 55%;
+    --mid-blue: 231 77% 48%;
+    --mid-blue-darker: 231 94% 37%;
+    --mid-blue-dark: 224 100% 17%;
+    --mid-blue-darkest: 233 97% 24%;
+
+    --grey-blue-lighter: 223 70% 67%;
+    --grey-blue-lightest: 224 75% 85%;
+    --grey-blue: 223 43% 48%;
+    --grey-blue-darker: 223 62% 36%;
+    --grey-blue-darkerest: 223 53% 31%;
+
+    --destructive: 0 74% 53%;
+  }
+}
+
+@layer base {
+  * {
+  }
+}
