@@ -81,10 +81,10 @@ export function Header() {
             </Button>
             
             <Button
-              variant="outline"
+              variant="ghost"
               size="sm"
               onClick={() => window.open(siteConfig.links.github, '_blank')}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 "
             >
               <Github className="w-4 h-4" />
               <span className="hidden xl:inline">GitHub</span>
