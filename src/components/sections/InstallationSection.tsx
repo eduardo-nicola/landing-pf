@@ -141,9 +141,6 @@ export function InstallationSection() {
                 </div>
               </div>
 
-              <div className="mt-4 text-sm text-text-muted">
-                <p>💡 <strong>Dica:</strong> Use <code className="bg-background px-2 py-1 rounded">-g</code> para instalação global</p>
-              </div>
             </motion.div>
           </motion.div>
 

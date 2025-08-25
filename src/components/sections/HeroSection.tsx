@@ -34,19 +34,6 @@ export function HeroSection() {
       content: '🚀 Abrindo projeto no VS Code...',
       delay: 500
     },
-    {
-      type: 'command' as const,
-      content: 'pf list',
-      delay: 1500
-    },
-    {
-      type: 'output' as const,
-      content: `📁 Projetos salvos:
-├── projeto → /home/user/meu-projeto
-├── api → /home/user/projects/my-api
-└── frontend → /home/user/projects/react-app`,
-      delay: 800
-    }
   ]
 
   return (
