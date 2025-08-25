@@ -98,12 +98,13 @@ export function CodeBlockWithCopy({
 interface InlineCodeWithCopyProps {
   code: string
   className?: string
+  inputClass?: string
 }
 
-export function InlineCodeWithCopy({ code, className }: InlineCodeWithCopyProps) {
+export function InlineCodeWithCopy({ code, className, inputClass }: InlineCodeWithCopyProps) {
   return (
-    <div className="inline-flex items-center gap-2 bg-surface border border-border rounded px-3 py-2 font-mono text-sm">
-      <code className={className}>{code}</code>
+    <div className={`inline-flex items-center gap-2 bg-surface border border-border rounded px-3 py-2 font-mono text-sm ${inputClass}`}>
+      <code className={`pl-6 ${className ?? ''}`}>{code}</code>
       <CopyButton 
         text={code}
         size="sm"

@@ -134,7 +134,7 @@ export function InstallationSection() {
               
               <div className="bg-background rounded-lg p-4 font-mono">
                 <div className="flex items-center justify-between">
-                  <code className="text-primary text-lg">{getInstallCommand()}</code>
+                  <code className="text-primary text-lg ">{getInstallCommand()}</code>
                   <CopyButton
                     text={getInstallCommand()}
                     showText={true}
@@ -193,7 +193,7 @@ export function InstallationSection() {
 
                           {/* Command */}
                           <div className="bg-background border border-border rounded-lg p-3 font-mono text-sm flex items-center justify-between">
-                            <code className="text-primary">{step.command}</code>
+                            <code className="text-primary pl-6">{step.command}</code>
                             <CopyButton 
                               text={step.command}
                               size="sm"

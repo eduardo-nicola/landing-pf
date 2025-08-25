@@ -152,7 +152,8 @@ export const navigation = [
 ]
 
 export const codeExamples = {
-  basic: `# Salvar um projeto
+  basic: `
+# Salvar um projeto
 pf add . meu-projeto
 
 # Navegar para o projeto
@@ -161,9 +162,7 @@ pf go meu-projeto
 # Listar todos os projetos
 pf list`,
 
-  advanced: `# Salvar com comando extra
-pf add . api --cmd "npm run dev"
-
+  advanced: `
 # Salvar um caminho específico
 pf add /path/to/project frontend
 
@@ -173,9 +172,13 @@ pf edit
 # Remover um alias
 pf remove projeto`,
 
-  workflow: `# Workflow típico de desenvolvimento
+  workflow: `
+# Salvar um novo prjeto
 pf add . current-project
-pf go api           # Abrir API
-pf go frontend      # Abrir Frontend
-pf go current-project # Voltar ao projeto atual`
+
+# Abrir o projeto sem o vscode
+pf go api --code
+ 
+# Abrir o projeto sem os comandos 
+pf go current-project --extra`
 }
