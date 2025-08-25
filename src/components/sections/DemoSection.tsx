@@ -240,7 +240,7 @@ export function DemoSection() {
           <h4 className="text-lg sm:text-xl font-semibold mb-4 text-center">
             💡 Dicas Interativas
           </h4>
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 text-xs sm:text-sm">
+          <div className="flex justify-around text-xs sm:text-sm">
             <div>
               <h5 className="font-medium mb-2 text-primary">Produtividade</h5>
               <ul className="space-y-1 text-text-muted">

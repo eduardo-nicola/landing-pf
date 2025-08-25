@@ -169,8 +169,8 @@ export function FeaturesSection() {
                 <div className="text-xl sm:text-2xl mb-2 sm:mb-3">🛠️</div>
                 <h4 className="font-semibold mb-2 text-sm sm:text-base">3. Comandos Extras</h4>
                 <TerminalCommand
-                  command="pf go api --cmd 'npm run dev'"
-                  output="🔥 Servidor iniciado!"
+                  command="pf edit api"
+                  output="📝 Edição dos comandos"
                   success={true}
                   className="text-xs sm:text-sm"
                 />

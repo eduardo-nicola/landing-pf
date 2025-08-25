@@ -110,7 +110,7 @@ export function Terminal({
         </div>
       </div>
       
-      <div className="terminal-content min-h-[200px]">
+      <div className="terminal-content min-h-[200px] lg:min-h-[350px]">
         <AnimatePresence>
           {visibleLines.map((line, index) => (
             <motion.div

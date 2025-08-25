@@ -54,27 +54,27 @@ export const features = [
     description: "Abra qualquer projeto no VS Code instantaneamente, não importa onde você esteja no terminal.",
     command: "pf go projeto"
   },
-  {
-    id: "extra-commands",
-    icon: "🛠️",
-    title: "Comandos Extras",
-    description: "Execute comandos automaticamente ao navegar para um projeto. Perfeito para iniciar servidores ou ativar ambientes virtuais.",
-    command: "pf add . projeto --cmd 'npm run dev'"
-  },
+  // {
+  //   id: "extra-commands",
+  //   icon: "🛠️",
+  //   title: "Comandos Extras",
+  //   description: "Execute comandos automaticamente ao navegar para um projeto. Perfeito para iniciar servidores ou ativar ambientes virtuais.",
+  //   command: "pf add . projeto"
+  // },
   {
     id: "interactive-edit",
     icon: "✏️",
     title: "Edição Interativa",
     description: "Modifique, remova ou visualize seus aliases de forma interativa com uma interface amigável no terminal.",
-    command: "pf edit"
+    command: "pf edit projeto"
   },
-  {
-    id: "global-install",
-    icon: "🌍",
-    title: "Instalação Global",
-    description: "Uma vez instalado globalmente, use o Path-Fast em qualquer lugar do seu sistema, em qualquer projeto.",
-    command: "pf --version"
-  }
+  // {
+  //   id: "global-install",
+  //   icon: "🌍",
+  //   title: "Instalação Global",
+  //   description: "Uma vez instalado globalmente, use o Path-Fast em qualquer lugar do seu sistema, em qualquer projeto.",
+  //   command: "pf --version"
+  // }
 ]
 
 export const terminalCommands = [
