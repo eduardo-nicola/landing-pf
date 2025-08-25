@@ -98,11 +98,11 @@ export const terminalCommands = [
   }
 ]
 
-export const installationSteps = [
+export const getInstallationSteps = (installCommand: string) => [
   {
     step: 1,
     title: "Instalar globalmente",
-    command: "pnpm add -g path-fast",
+    command: installCommand,
     description: "Instala o Path-Fast globalmente no seu sistema"
   },
   {
@@ -118,6 +118,8 @@ export const installationSteps = [
     description: "Abre o projeto no VS Code de qualquer lugar"
   }
 ]
+
+export const installationSteps = getInstallationSteps("pnpm add -g path-fast")
 
 export const socialProof = {
   githubStars: "⭐ GitHub Stars",

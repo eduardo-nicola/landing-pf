@@ -6,35 +6,38 @@ import { Package, Terminal as TerminalIcon, CheckCircle, Copy, ExternalLink } fr
 import { Button } from '@/components/ui/Button'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card'
 import { CopyButton, CodeBlockWithCopy, InlineCodeWithCopy } from '@/components/ui/CopyButton'
-import { packageInfo, installationSteps } from '@/lib/constants'
-
-const packageManagers = [
-  {
-    name: 'pnpm',
-    command: packageInfo.installCommand,
-    icon: '📦',
-    recommended: true,
-    description: 'Rápido e eficiente'
-  },
-  {
-    name: 'npm',
-    command: packageInfo.npmInstallCommand,
-    icon: '📋',
-    recommended: false,
-    description: 'Padrão do Node.js'
-  },
-  {
-    name: 'yarn',
-    command: packageInfo.yarnInstallCommand,
-    icon: '🧶',
-    recommended: false,
-    description: 'Alternativa popular'
-  }
-]
+import { usePackageManager } from '@/contexts/PackageManagerContext'
+import { packageInfo, getInstallationSteps } from '@/lib/constants'
 
 export function InstallationSection() {
-  const [selectedManager, setSelectedManager] = useState(packageManagers[0])
+  const { selectedManager, setSelectedManager, getInstallCommand, getPackageManagerInfo } = usePackageManager()
   const [completedSteps, setCompletedSteps] = useState<number[]>([])
+
+  const installationSteps = getInstallationSteps(getInstallCommand())
+
+  const packageManagers = [
+    {
+      name: 'pnpm',
+      command: 'pnpm add -g path-fast',
+      icon: '📦',
+      recommended: true,
+      description: 'Rápido e eficiente'
+    },
+    {
+      name: 'npm',
+      command: 'npm install -g path-fast',
+      icon: '📋',
+      recommended: false,
+      description: 'Padrão do Node.js'
+    },
+    {
+      name: 'yarn',
+      command: 'yarn global add path-fast',
+      icon: '🧶',
+      recommended: false,
+      description: 'Alternativa popular'
+    }
+  ]
 
   const toggleStep = (stepNumber: number) => {
     setCompletedSteps(prev => 
@@ -83,11 +86,11 @@ export function InstallationSection() {
                 <Card
                   key={manager.name}
                   className={`cursor-pointer transition-all duration-300 ${
-                    selectedManager.name === manager.name
+                    selectedManager === manager.name
                       ? 'border-primary bg-primary/5 shadow-lg scale-105'
                       : 'hover:border-primary/50 hover:scale-102'
                   }`}
-                  onClick={() => setSelectedManager(manager)}
+                  onClick={() => setSelectedManager(manager.name as any)}
                 >
                   <div className="p-6 flex items-center gap-4">
                     <div className="text-3xl">{manager.icon}</div>
@@ -103,11 +106,11 @@ export function InstallationSection() {
                       <p className="text-text-muted text-sm">{manager.description}</p>
                     </div>
                     <div className={`w-4 h-4 rounded-full border-2 ${
-                      selectedManager.name === manager.name
+                      selectedManager === manager.name
                         ? 'border-primary bg-primary'
                         : 'border-border'
                     }`}>
-                      {selectedManager.name === manager.name && (
+                      {selectedManager === manager.name && (
                         <div className="w-full h-full rounded-full bg-primary" />
                       )}
                     </div>
@@ -118,7 +121,7 @@ export function InstallationSection() {
 
             {/* Install Command */}
             <motion.div
-              key={selectedManager.name}
+              key={selectedManager}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
@@ -131,9 +134,9 @@ export function InstallationSection() {
               
               <div className="bg-background rounded-lg p-4 font-mono">
                 <div className="flex items-center justify-between">
-                  <code className="text-primary text-lg">{selectedManager.command}</code>
-                  <CopyButton 
-                    text={selectedManager.command}
+                  <code className="text-primary text-lg">{getInstallCommand()}</code>
+                  <CopyButton
+                    text={getInstallCommand()}
                     showText={true}
                     variant="primary"
                     size="sm"
@@ -251,7 +254,7 @@ export function InstallationSection() {
                     <span className="text-2xl">1️⃣</span>
                   </div>
                   <h4 className="font-semibold mb-2">Instalar</h4>
-                  <InlineCodeWithCopy code="pnpm add -g path-fast" />
+                  <InlineCodeWithCopy code={getInstallCommand()} />
                 </div>
                 
                 <div className="text-center">

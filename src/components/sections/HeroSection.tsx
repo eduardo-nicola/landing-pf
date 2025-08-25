@@ -5,12 +5,15 @@ import { Download, Github, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Terminal } from '@/components/ui/Terminal'
 import { InlineCodeWithCopy } from '@/components/ui/CopyButton'
+import { usePackageManager } from '@/contexts/PackageManagerContext'
 import { siteConfig, packageInfo, terminalCommands } from '@/lib/constants'
 import { copyToClipboard } from '@/lib/utils'
 
 export function HeroSection() {
+  const { getInstallCommand, selectedManager } = usePackageManager()
+  
   const handleInstallCopy = async () => {
-    await copyToClipboard(packageInfo.installCommand)
+    await copyToClipboard(getInstallCommand())
   }
 
   const terminalLines = [
@@ -97,7 +100,7 @@ export function HeroSection() {
                 Instalação rápida:
               </p>
               <InlineCodeWithCopy
-                code={packageInfo.installCommand}
+                code={getInstallCommand()}
                 className="text-primary text-sm sm:text-base"
               />
             </motion.div>
@@ -115,7 +118,7 @@ export function HeroSection() {
                 className="group relative overflow-hidden"
               >
                 <Download className="w-5 h-5 mr-2" />
-                Instalar via pnpm
+                Instalar via {selectedManager}
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20"
                   initial={{ x: '-100%' }}

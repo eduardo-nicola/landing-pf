@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Fira_Code, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from 'next-themes'
+import { PackageManagerProvider } from '@/contexts/PackageManagerContext'
 import { siteConfig } from '@/lib/constants'
 import "./globals.css";
 
@@ -163,14 +164,16 @@ export default function RootLayout({
         className={`${firaCode.variable} ${jetbrainsMono.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
-        <ThemeProvider
-          attribute="data-theme"
-          defaultTheme="dark"
-          enableSystem={true}
-          disableTransitionOnChange={false}
-        >
-          {children}
-        </ThemeProvider>
+        <PackageManagerProvider>
+          <ThemeProvider
+            attribute="data-theme"
+            defaultTheme="dark"
+            enableSystem={true}
+            disableTransitionOnChange={false}
+          >
+            {children}
+          </ThemeProvider>
+        </PackageManagerProvider>
       </body>
     </html>
   );

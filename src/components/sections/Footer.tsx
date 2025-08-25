@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Github, Package, Mail, Heart, ExternalLink, Zap, Terminal } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
+import { usePackageManager } from '@/contexts/PackageManagerContext'
 import { siteConfig, packageInfo, navigation } from '@/lib/constants'
 import { scrollToSection } from '@/lib/utils'
 
@@ -43,6 +44,8 @@ const socialLinks = [
 ]
 
 export function Footer() {
+  const { getInstallCommand } = usePackageManager()
+  
   const handleLinkClick = (href: string) => {
     if (href.startsWith('#')) {
       scrollToSection(href.slice(1))
@@ -104,12 +107,12 @@ export function Footer() {
                 <p className="text-sm text-text-muted mb-2">Instalação rápida:</p>
                 <div className="flex items-center justify-between bg-surface rounded px-3 py-2">
                   <code className="text-primary text-sm font-mono">
-                    {packageInfo.installCommand}
+                    {getInstallCommand()}
                   </code>
                   <Button
                     variant="ghost"
                     size="sm"
-                    onClick={() => navigator.clipboard?.writeText(packageInfo.installCommand)}
+                    onClick={() => navigator.clipboard?.writeText(getInstallCommand())}
                     className="p-1 h-6 w-6"
                   >
                     <Zap className="w-3 h-3" />
